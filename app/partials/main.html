@@ -1,0 +1,31 @@
+<!-- Page Content -->
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Main Page</p>
+                <div class="form-group col-xs-4">
+                    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                </div>
+                <table class="table">
+                    <thead>
+                        <th>Edit</th>
+                        <th>Visitor</th>
+                        <th>Home</th>
+                        <th>vTeam</th>
+                        <th>hTeam</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="game in games | filter:search">
+                            <td><a href="#/edit/{{game._id.$oid}}">Edit</a></td>
+                            <td>{{game.visitor.player}}</td>
+                            <td>{{game.home.player}}</td>
+                            <td>{{game.visitor.team}}</td>
+                            <td>{{game.home.team}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
