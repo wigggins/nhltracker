@@ -50,11 +50,15 @@ nhltracker.config(function ($stateProvider, $urlRouterProvider, RestangularProvi
 });
 
 function ListCtrl($scope, Restangular) {
-  $scope.games = Restangular.all('games').getList();
+  $scope.games = Restangular.all('games').getList().$object;
 }
 
 
 function CreateCtrl($scope, $location, Restangular) {
+
+	$scope.teams = ["Anaheim Ducks","Boston Bruins","Buffalo Sabres","Calgary Flames","Carolina Hurricanes","Chicago Blackhawks","Colorado Avalanche","Columbus Blue Jackets","Dallas Stars","Detroit Red Wings","Edmonton Oilers","Florida Panthers","Los Angeles Kings","Minnesota Wild","Montreal Canadiens","Nashville Predators","New Jersey Devils","New York Islanders","New York Rangers","Philadelphia Flyers","Phoenix Coyotes","Pittsburgh Penguins","Ottawa Senators","San Jose Sharks","St Louis Blues","Tampa Bay Lightning","Toronto Maple Leafs","Vancouver Canucks","Washington Capitals","Winnipeg Jets"];
+
+
   $scope.save = function() {  
     Restangular.all('games').post($scope.game).then(function(game) {
       $location.path('/edit/' + game._id.$oid);

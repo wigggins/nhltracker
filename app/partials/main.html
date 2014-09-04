@@ -14,6 +14,7 @@
                         <th>Home</th>
                         <th>vTeam</th>
                         <th>hTeam</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="game in games | filter:search">
@@ -22,6 +23,7 @@
                             <td>{{game.home.player}}</td>
                             <td>{{game.visitor.team}}</td>
                             <td>{{game.home.team}}</td>
+                            <td><a href="#/{{game._id.$oid}}">View</a></td>
                         </tr>
                     </tbody>
                 </table>
