@@ -24,6 +24,11 @@ nhltracker.config(function ($stateProvider, $urlRouterProvider, RestangularProvi
 	  	templateUrl: 'partials/new.html',
 	  	controller: 'EditCtrl'
 	  })
+	  .state('game', {
+	  	url: '/game/:gameId',
+	  	templateUrl: 'partials/game.html',
+	  	controller: 'GameCtrl'
+	  })
 	  .state('new', {
 	  	url: '/new',
 	  	templateUrl: 'partials/new.html',
@@ -66,11 +71,11 @@ function CreateCtrl($scope, $location, Restangular) {
   }
 }
 
+function EditCtrl($scope, $location, $stateParams, Restangular) {
 
-function EditCtrl($scope, $location, $routeParams, Restangular) {
   var self = this;
 
-  Restangular.one('games', $routeParams.gameId).get().then(function(game) {
+  Restangular.one('games', $stateParams.gameId).get().then(function(game) {
     self.original = game;
     $scope.game = Restangular.copy(self.original);
   });
@@ -93,5 +98,12 @@ function EditCtrl($scope, $location, $routeParams, Restangular) {
   };
 }
 
+function GameCtrl($scope, $location, $stateParams, Restangular) {
+	Restangular.one('games', $stateParams.gameId).get().then(function(game) {
+		$scope.game = game;
+
+		console.log($scope.game, true);
+	})
+}
 
 
