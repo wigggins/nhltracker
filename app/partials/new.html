@@ -10,7 +10,7 @@
 	            			<div class="col-xs-6">
 	            				<div class="form-group">
 	            					<label>Player</label>
-	            					<select class="form-control" ng-model="game.visitor.player">
+	            					<select class="form-control" ng-model="game.visitor.player" ng-options="player.name for player in players">
 										<option>2</option>
 										<option>3</option>
 										<option>4</option>
@@ -20,7 +20,7 @@
 	            			<div class="col-xs-6">
 	            				<div class="form-group">
 	            					<label>Team</label>
-	            					<input class="form-control" ng-model="game.visitor.team">
+	            					<input class="form-control" ng-model="game.visitor.team" ng-options="team for team in teams" placeholder="Enter team name" bs-typeahead>
 	            				</div>
 	            			</div>
 	            		</div>
@@ -78,7 +78,7 @@
 	            			<div class="col-xs-6">
 	            				<div class="form-group">
 	            					<label>Player</label>
-	            					<select class="form-control" ng-model="game.home.player">
+	            					<select class="form-control" ng-model="game.home.player" ng-options="player.name for player in players">
 										<option>2</option>
 										<option>3</option>
 										<option>4</option>
@@ -88,7 +88,7 @@
 	            			<div class="col-xs-6">
 	            				<div class="form-group">
 	            					<label>Team</label>
-	            					<input class="form-control" ng-model="game.home.team">
+	            					<input class="form-control" ng-model="game.home.team" ng-options="team for team in teams" placeholder="Enter team name" bs-typeahead>
 	            				</div>
 	            			</div>
 	            		</div>	<!-- /.row -->

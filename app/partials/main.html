@@ -19,8 +19,8 @@
                     <tbody>
                         <tr ng-repeat="game in games | filter:search">
                             <td><a href="#/edit/{{game._id.$oid}}">Edit</a></td>
-                            <td>{{game.visitor.player}}</td>
-                            <td>{{game.home.player}}</td>
+                            <td>{{game.visitor.player.name}}</td>
+                            <td>{{game.home.player.name}}</td>
                             <td>{{game.visitor.team}}</td>
                             <td>{{game.home.team}}</td>
                             <td><a href="#/game/{{game._id.$oid}}">View</a></td>
