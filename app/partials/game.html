@@ -8,7 +8,7 @@
             		<h2>{{game.visitor.player.name}}</h2>
             		<h4>{{game.visitor.team}}</h4>
                     <div class="card-game-score-left">
-                        2
+                        {{game.visitor.p3.goals}}
                     </div>
                     <div class="team-banner">
                     </div>
@@ -19,12 +19,21 @@
             		<h2 class="text-right">{{game.home.player.name}}</h2>
             		<h4 class="text-right">{{game.home.team}}</h4>
                     <div class="card-game-score-right">
-                        2
+                        {{game.home.p3.goals}}
                     </div>
                     <div class="team-banner">
                     </div>
             	</div>
             </div>
         </div>	<!-- /.row -->
+        <div class="game-details">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    {{hppp}}
+                </div>
+
+            </div> <!-- /.row -->
+        </div>
     </div>
 </div>

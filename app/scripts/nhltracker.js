@@ -13,6 +13,14 @@ nhltracker = angular.module('nhltracker', [
 	'appControllers'
 ]);
 
+nhltracker.constant('PLAYERS', {
+	0: {'id': 0, 'name': 'Koch'},
+	1: {'id': 1, 'name': 'Eddins'},
+	2: {'id': 2, 'name': 'Wiggins'}
+});
+
+nhltracker.constant('TEAMS', ['Anaheim Ducks','Boston Bruins','Buffalo Sabres','Calgary Flames','Carolina Hurricanes','Chicago Blackhawks','Colorado Avalanche','Columbus Blue Jackets','Dallas Stars','Detroit Red Wings','Edmonton Oilers','Florida Panthers','Los Angeles Kings','Minnesota Wild','Montreal Canadiens','Nashville Predators','New Jersey Devils','New York Islanders','New York Rangers','Philadelphia Flyers','Phoenix Coyotes','Pittsburgh Penguins','Ottawa Senators','San Jose Sharks','St Louis Blues','Tampa Bay Lightning','Toronto Maple Leafs','Vancouver Canucks','Washington Capitals','Winnipeg Jets']);
+
 
 nhltracker.config(function ($stateProvider, $urlRouterProvider, RestangularProvider) {
 	$stateProvider

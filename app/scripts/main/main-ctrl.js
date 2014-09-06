@@ -7,21 +7,38 @@ appControllers = angular.module('appControllers', []);
 // List Ctrl
 appControllers.controller('ListCtrl', function($scope, Restangular) {
 
+
   $scope.games = Restangular.all('games').getList().$object;
 
+
+  // Restangular.all('games').customGET('', {"q":{"name": "Eddins"}}).then(function(data) {
+  //   $scope.results = data;
+  //   console.log(data);
+  // });
+
+  // $scope.wiggins = _.where(game).visitor.player, function(player) {
+  //   return player.name === 'Wiggins';
+  // }
+
+  // console.log($scope.wiggins);
+
+  console.log(angular.toJson($scope.games, true));
 
 });
 
 // Create Ctrl
-appControllers.controller('CreateCtrl', function($scope, $location, Restangular) {
+appControllers.controller('CreateCtrl', function($scope, $location, Restangular, PLAYERS, TEAMS) {
   
-  $scope.teams = ["Anaheim Ducks","Boston Bruins","Buffalo Sabres","Calgary Flames","Carolina Hurricanes","Chicago Blackhawks","Colorado Avalanche","Columbus Blue Jackets","Dallas Stars","Detroit Red Wings","Edmonton Oilers","Florida Panthers","Los Angeles Kings","Minnesota Wild","Montreal Canadiens","Nashville Predators","New Jersey Devils","New York Islanders","New York Rangers","Philadelphia Flyers","Phoenix Coyotes","Pittsburgh Penguins","Ottawa Senators","San Jose Sharks","St Louis Blues","Tampa Bay Lightning","Toronto Maple Leafs","Vancouver Canucks","Washington Capitals","Winnipeg Jets"];
+  $scope.teams = TEAMS;
+  // $scope.players = PLAYERS;
 
   $scope.players = [
-        { id: '1', name: 'Eddins'},
-        { id: '2', name: 'Koch'},
-        { id: '3', name: 'Wiggins'}
+        { id: 0, name: 'Eddins'},
+        { id: 1, name: 'Koch'},
+        { id: 2, name: 'Wiggins'}
       ];
+
+  console.log($scope.players, true);
 
   $scope.save = function() {  
     Restangular.all('games').post($scope.game).then(function(game) {
@@ -33,9 +50,12 @@ appControllers.controller('CreateCtrl', function($scope, $location, Restangular)
 });
 
 // Edit Ctrl
-appControllers.controller('EditCtrl', function($scope, $location, $stateParams, Restangular) {
+appControllers.controller('EditCtrl', function($scope, $location, $stateParams, Restangular, PLAYERS, TEAMS) {
 
   var self = this;
+
+  $scope.teams = TEAMS;
+  $scope.players = PLAYERS;
 
   Restangular.one('games', $stateParams.gameId).get().then(function(game) {
     self.original = game;
@@ -64,7 +84,17 @@ appControllers.controller('GameCtrl', function ($scope, $location, $stateParams,
   Restangular.one('games', $stateParams.gameId).get().then(function(game) {
     $scope.game = game;
 
-    console.log($scope.game);
+
+    $scope.p2shots = game.visitor.p2.shots - game.visitor.p1.shots;
+
+    $scope.p3shots = game.visitor.p3.shots - game.visitor.p2.shots;
+
+    $scope.hppp = game.home.p3.ppo % game.home.p3.ppg;
+
+
+    // console.log(p1shots);
+
+    // console.log(angular.toJson(game.visitor.p1.shots, true));
   })
 });
 
